@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>Zooming with Clover</title>
+        <style>
+            body{
+                text-align: center;
+            }
+            h1{
+                font-size: 52;
+                font-family: cursive;
+                color:crimson;
+            }
+            table{
+                background-color: white;
+            }
+            div{
+                font-size: 40;
+                font-family: cursive;
+                color:chocolate;
+                text-align: center;
+                align-content: center;
+                width:300px;
+            }
+            div.pic{
+                color:greenyellow;
+                text-align: center;
+                align-content: center;
+                height:180px;
+                width:300px;
+                border-style: dotted;
+            }
+            div.slot{
+                color:greenyellow;
+                text-align: center;
+                align-content: center;
+                height:180px;
+                width:300px;
+                border-style: dotted;
+            }
+        </style>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script>
+            function reload(){
+                document.location.reload();
+            }
+            function placeMyImage(ev){
+                ev.target.parentElement.setAttribute('onclick','');
+                for(i=0;i<document.getElementsByClassName('slot').length;i++){
+                    if(document.getElementsByClassName('slot')[i].childNodes.length==0){
+                        document.getElementsByClassName('slot')[i].innerHTML=ev.target.parentElement.innerHTML;
+                        ev.target.parentElement.innerHTML='';
+                        break;
+                    }
+                }
+                if(document.getElementsByClassName('slot')[document.getElementsByClassName('slot').length-1].childNodes.length!=0){
+                        document.getElementsByClassName('pic')[0].parentElement.parentElement.parentElement.innerHTML='';
+                    }
+            }
+        </script>
+    </head>
+    <body background="https://www.itl.cat/pngfile/big/15-151454_wallpaper-esprit-kids-stars-colourful-35694-2-illustration.jpg">
+        <center>
+            <H1>Zooming with Clover</H1>
+            <table>
+                <tr>
+                    <td><div class = 'label'>1</div></td>
+                    <td><div class = 'label'>2</div></td>
+                    <td><div class = 'label'>3</div></td>
+                </tr>
+                <tr>
+                    <td><div class = 'slot' id = "Slot1"></div></td>
+                    <td><div class = 'slot' id = "Slot2"></div></td>
+                    <td><div class = 'slot' id = "Slot3"></div></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td><div class = 'pic' onclick="placeMyImage(event)"><img class = "image1" width = 300 src = "https://lh3.googleusercontent.com/u/0/d/1Q2MrHsw7c-IJLdX6vgeLWNqTIWc4Jng-=w952-h938-iv1"></div></td>
+                    <td><div class = 'pic' onclick="placeMyImage(event)"><img class = "image2" width = 300 src = "https://lh3.googleusercontent.com/u/0/d/1g3Ldnm3aUUzmhs6EKVa12-m8xz79BE6R=w1920-h938-iv1"></div></td>
+                    <td><div class = 'pic' onclick="placeMyImage(event)"><img class = "image3" width = 300 src = "https://lh3.googleusercontent.com/u/0/d/1q2JlHt8rNip93jlDkkMXPyjus2U7x1OR=w1920-h938-iv1"></div></td>
+                    
+                </tr>
+            </table>
+            <br>
+            <img src="https://cdn.pixabay.com/photo/2016/03/31/18/42/icons-1294569__340.png" onclick = "reload()" height = 80>
+        </center>
+    </body>
+</html>
