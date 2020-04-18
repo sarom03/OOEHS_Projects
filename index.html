@@ -6,7 +6,7 @@
                 text-align: center;
             }
             h1{
-                font-size: 52;
+                font-size: 62;
                 font-family: cursive;
                 color:crimson;
             }
@@ -16,14 +16,15 @@
                 color:green;
             }
             h5{
-                font-size: 38;
+                font-size: 20;
                 font-family: cursive;
                 color:purple;
             }
             h4{
                 font-size: 24;
                 font-family: cursive;
-                color:black;
+                font-weight: bold;
+                color:Yellow;
             }
             table{
                 background-color: white;
@@ -55,6 +56,7 @@
         </style>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
         <script>
+            var boolean = false;
             function reload(){
                 document.location.reload();
             }
@@ -63,14 +65,39 @@
                 for(i=0;i<document.getElementsByClassName('slot').length;i++){
                     if(document.getElementsByClassName('slot')[i].childNodes.length==0){
                         document.getElementsByClassName('slot')[i].innerHTML=ev.target.parentElement.innerHTML;
+                        var slotId = document.getElementsByClassName('slot')[i].id;
+                        var imageId = ev.target.id;
+                        
+                        if(slotId!=imageId){
+                            boolean = false;
+                            console.log(slotId);
+                            console.log(imageId);
+                            console.log(boolean);
+                           }
+                           else{
+                           boolean = true;
+                            console.log(boolean);
+                           }
                         ev.target.parentElement.innerHTML='';
                         break;
                     }
                 }
                 if(document.getElementsByClassName('slot')[document.getElementsByClassName('slot').length-1].childNodes.length!=0){
                         document.getElementsByClassName('pic')[0].parentElement.parentElement.parentElement.innerHTML='';
-                     
+                    var textNode = document.createTextNode("Well Done !!");
+                    var textNode1 = document.createTextNode("You are Close! Try Again");
+                    var item = document.getElementById('result');
+                    if(boolean==true){
+                    var reloadButton = document.getElementById('reload');
+                    item.replaceChild(textNode,item.childNodes[0]);
+                    //reloadButton.parentElement.removeChild(reloadButton);
+                    reloadButton.src="https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c4c4.png";
                     }
+                    else{
+                        item.replaceChild(textNode1,item.childNodes[0]);
+                    }
+                    
+                }
             }
         </script>
     </head>
@@ -82,7 +109,7 @@
             <table>
                 <tr>
                     <td><div class = 'label'>1</div></td>
-                    <td><div class = 'label'>2</B></div></td>
+                    <td><div class = 'label'>2</div></td>
                     <td><div class = 'label'><B>3</B></div></td>
                     
                 </tr>
@@ -94,17 +121,15 @@
             </table>
             <table>
                 <tr>
-                    <td><div class = 'pic' onclick="placeMyImage(event)"><img class = "image1" width = 300 height =300 src = "https://lh3.googleusercontent.com/u/0/d/1KbT7gR7CfiCWpcnuhgoOE0EWgur3fxcr"></div></td>
-                    <td><div class = 'pic' onclick="placeMyImage(event)"><img class = "image2" width = 300 height =300 src = "https://lh3.googleusercontent.com/u/0/d/1BWb6UFg-knYZ8zt-rRHu9xgbb8BziQmN"></div></td>
-                    <td><div class = 'pic' onclick="placeMyImage(event)"><img class = "image3" width = 300 height =300 src = "https://lh3.googleusercontent.com/u/0/d/1iQr3P9h3yan6yCUZibgN8cMMZ0RqaASA"></div></td>
+                    <td><div class = 'pic' onclick="placeMyImage(event)"><img id = "Slot3" width = 300 height =300 src = "https://lh3.googleusercontent.com/u/0/d/1KbT7gR7CfiCWpcnuhgoOE0EWgur3fxcr"></div></td>
+                    <td><div class = 'pic' onclick="placeMyImage(event)"><img id = "Slot1" width = 300 height =300 src = "https://lh3.googleusercontent.com/u/0/d/1BWb6UFg-knYZ8zt-rRHu9xgbb8BziQmN"></div></td>
+                    <td><div class = 'pic' onclick="placeMyImage(event)"><img id = "Slot2" width = 300 height =300 src = "https://lh3.googleusercontent.com/u/0/d/1iQr3P9h3yan6yCUZibgN8cMMZ0RqaASA"></div></td>
                     
                 </tr>
             </table>
             <br>
-            <h3>Good Try!!</h3>
-    <h4>Did you go wrong?..Don't give up!</h4>
-    <h4>Try again</h4>
-            <img src="https://cdn.pixabay.com/photo/2016/03/31/18/42/icons-1294569__340.png" onclick = "reload()" height = 80>
+    <h4 id='result'> </h4>
+            <img id = 'reload' src="https://cdn.pixabay.com/photo/2016/03/31/18/42/icons-1294569__340.png" onclick = "reload()" height = 80>
         </center>
     </body>
 </html>
