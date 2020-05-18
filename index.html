@@ -1,10 +1,10 @@
 <html>
     <head>
-        <title>Visual Similarities</title>
+        <title>Goldilocks and the three bears</title>
         <style>
             body{
                 text-align: center;
-                background-image: url("https://cdn2.vectorstock.com/i/1000x1000/25/86/bright-jigsaw-puzzle-background-vector-5082586.jpg");
+                background-image: url("https://png.pngtree.com/thumb_back/fw800/back_our/20190619/ourmid/pngtree-small-fresh-spring-equinox-poster-background-template-image_137719.jpg");
                 background-size: cover;
             }
             h1{
@@ -30,7 +30,6 @@
             }
             table{
                 background-color: white;
-                border-color: red;
             }
             div{
                 font-size: 40;
@@ -41,30 +40,50 @@
                 width:300px;
             }
             div.pic{
-                color:greenyellow;
+                color:blue;
                 text-align: center;
                 align-content: center;
                 height:300px;
                 width:300px;
-               
+                border-style: dotted;
+            }
+            div.char-pic{
+                color:blue;
+                text-align: center;
+                align-content: center;
+                height:300px;
+                width:300px;
+                border-style: dotted;
             }
             div.slot{
-                color:greenyellow;
+                color:blue;
                 text-align: center;
                 align-content: center;
                 height:300px;
                 width:300px;
-                border-style: solid;
-                border-color: blue;
+                border-style: dotted;
+            }
+            div.char-slot{
+                color:blue;
+                text-align: center;
+                align-content: center;
+                height:300px;
+                width:300px;
+                border-style: dotted;
             }
         </style>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
         <script>
             var boolean = true;
+            var task1Completed = false;
+            var task2Completed = false;
+            /*This method reloads the page*/
             function reload(){
                 document.location.reload();
             }
-            function placeMyImage(ev){
+            
+            /*This method adds Story Pictures to the Empty slots*/
+            function sortMyImages(ev){
                 ev.target.parentElement.setAttribute('onclick','');
                 for(i=0;i<document.getElementsByClassName('slot').length;i++){
                     if(document.getElementsByClassName('slot')[i].childNodes.length==0){
@@ -72,11 +91,9 @@
                         var slotId = document.getElementsByClassName('slot')[i].id;
                         var imageId = ev.target.id;
                         
+                        /**Validation**/
                         if(slotId!=imageId){
                             boolean = false;
-                            console.log(slotId);
-                            console.log(imageId);
-                            console.log(boolean);
                            }
                            else{
                             console.log(boolean);
@@ -86,81 +103,103 @@
                     }
                 }
                 if(document.getElementsByClassName('slot')[document.getElementsByClassName('slot').length-1].childNodes.length!=0){
-                        document.getElementsByClassName('pic')[0].parentElement.parentElement.parentElement.innerHTML='';
-                    var textNode = document.createTextNode("Well Done !!");
-                    var textNode1 = document.createTextNode("You are almost there! Try Again");
-                    var item = document.getElementById('result');
-                    if(boolean==true){
-                    var reloadButton = document.getElementById('reload');
-                    item.replaceChild(textNode,item.childNodes[0]);
-                    //reloadButton.parentElement.removeChild(reloadButton);
-                    reloadButton.src="https://i.pinimg.com/originals/72/4f/a9/724fa923d676241096b390af57792f27.gif";
+                    document.getElementsByClassName('pic')[0].parentElement.parentElement.parentElement.innerHTML='';
+                    Task2Completed=true;
+                    if(Task1Completed==true){
+                        
+                        /**Report**/
+                        var textNode = document.createTextNode("Well Done !!");
+                        var textNode1 = document.createTextNode("You are almost there! Try Again");
+                        var item = document.getElementById('result');
+                        if(boolean==true){
+                            var reloadButton = document.getElementById('reload');
+                            item.replaceChild(textNode,item.childNodes[0]);
+                            reloadButton.src="https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c4c4.png";
+                            
+                        }
+                        else{
+                            item.replaceChild(textNode1,item.childNodes[0]);
+                        }
                     }
-                    else{
-                        item.replaceChild(textNode1,item.childNodes[0]);
+                }
+            }
+            
+            /*This method adds Characters to the Empty char-slots*/
+            function findCharacters(ev){
+                ev.target.parentElement.setAttribute('onclick','');
+                for(i=0;i<document.getElementsByClassName('char-slot').length;i++){
+                    if(document.getElementsByClassName('char-slot')[i].childNodes.length==0){
+                        document.getElementsByClassName('char-slot')[i].innerHTML=ev.target.parentElement.innerHTML;
+                        var imageId = ev.target.id;
+                        
+                        /**Validation**/
+                        if(imageId=='wrong'){
+                            boolean = false;
+                           }
+                           else{
+                            console.log(boolean);
+                           }
+                        ev.target.parentElement.innerHTML='';
+                        break;
                     }
-                    
+                }
+                if(document.getElementsByClassName('char-slot')[document.getElementsByClassName('char-slot').length-1].childNodes.length!=0){
+                    document.getElementsByClassName('char-pic')[0].parentElement.parentElement.parentElement.innerHTML='';
+                    Task1Completed=true;
+                    if(task2Completed==true){
+                        
+                        /**Report**/
+                        var textNode = document.createTextNode("Well Done !!");
+                        var textNode1 = document.createTextNode("You are almost there! Try Again");
+                        var item = document.getElementById('result');
+                        if(boolean==true){
+                            var reloadButton = document.getElementById('reload');
+                            item.replaceChild(textNode,item.childNodes[0]);
+                            reloadButton.src="https://media3.giphy.com/media/l0HUoqAi83b12usCc/source.gif";
+                            
+                        }
+                        else{
+                            item.replaceChild(textNode1,item.childNodes[0]);
+                        }
+                    }
                 }
             }
         </script>
     </head>
     <body>
         <center>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+                 <H1>Goldilocks and the three bears</H1>
+            <H3>Story Activity</H3>
            
-            
-               <br>
-               <br>
-               <br>
-            <br>
-               <br>
-            
-            <br>
-               <br>
-               <br>
-            <br>
-                  <br>
-               <br>
-            <br>
-               <br>
-               <br>
-            <br>
-            <br>
-               <br>
-               <br>
-               <br>
-            <br>
-               <br>
-            <br>
-               <br>
-               <br>
-            <br>
-                  <br>
-               <br>
-            <br>
-               <br>
-               <br>
-            <br>
-            <br>
-               <br>
-               <br>
-               <br>
-            <br>
-               <br>
-               <br>
-            <br>
-            <br>
-            <H1>Visual Similarities</H1>
-            <H3>Choose the pictures that are similar in the correct order.</H3>
-        
-            <table bordercolor=red>
+            <H5>1. Identify the characters from the Story.</H5>
+            <table>
                 <tr>
-
-                    <td><div class = 'static-pic'><img  width = 300 height =300 src = "https://lh3.googleusercontent.com/u/0/d/1nTfnZU0wTlVHAKNzKeIDcp46W6lg9qWa"></div></td>
-                     <td><div class = 'static-pic'><img  width = 300 height =300 src = "https://lh3.googleusercontent.com/u/0/d/1eaH8AI4CqVxz-nGyUydra5rmarNbj9lS"></div></td>
-                     <td><div class = 'static-pic'><img  width = 300 height =300 src = "https://lh3.googleusercontent.com/u/0/d/17vgC9_pNqdcSWM5RZY7x3fovvXWUPGPO"></div></td>
-                     <td><div class = 'static-pic'><img  width = 300 height =300 src = "https://lh3.googleusercontent.com/u/0/d/1uW1mdtPcF2yn96PzHsdPIb95hODsfr5F"></div></td>
+                    <td><div class = 'char-slot' id = "Slot1"></div></td>
+                    <td><div class = 'char-slot' id = "Slot2"></div></td>
+                    <td><div class = 'char-slot' id = "Slot3"></div></td>
                 </tr>
-                
+            </table>
+            <table>
+                <tr>
+                    <td><div class = 'char-pic' onclick="findCharacters(event)"><img id = "right" width = 300 height =300 src = "6.png"></div></td>
+                    <td><div class = 'char-pic' onclick="findCharacters(event)"><img id = "wrong" width = 300 height =300 src = "8.jpg"></div></td>
+                    <td><div class = 'char-pic' onclick="findCharacters(event)"><img id = "right" width = 300 height =300 src = "5.png"></div></td>
+                    <td><div class = 'char-pic' onclick="findCharacters(event)"><img id = "right" width = 300 height =300 src = "7.png"></div></td>
+            </table>
+            <H5>2. Choose the pictures in the correct order.</H5>
+            <table>
+                <tr>
+                    <td><div class = 'label'>1</div></td>
+                    <td><div class = 'label'>2</div></td>
+                    <td><div class = 'label'>3</div></td>
+                    <td><div class = 'label'>4</div></td>
+                </tr>
                 <tr>
                     <td><div class = 'slot' id = "Slot1"></div></td>
                     <td><div class = 'slot' id = "Slot2"></div></td>
@@ -170,16 +209,14 @@
             </table>
             <table>
                 <tr>
-                    
-                    <td><div class = 'pic' onclick="placeMyImage(event)"><img id = "Slot3" width = 300 height =300 src = "https://lh3.googleusercontent.com/u/0/d/17vgC9_pNqdcSWM5RZY7x3fovvXWUPGPO"></div></td>
-                    <td><div class = 'pic' onclick="placeMyImage(event)"><img id = "Slot1" width = 300 height =300 src = "https://lh3.googleusercontent.com/u/0/d/1nTfnZU0wTlVHAKNzKeIDcp46W6lg9qWa"></div></td>
-                    <td><div class = 'pic' onclick="placeMyImage(event)"><img id = "Slot4" width = 300 height =300 src = "https://lh3.googleusercontent.com/u/0/d/1uW1mdtPcF2yn96PzHsdPIb95hODsfr5F"></div></td>
-                    <td><div class = 'pic' onclick="placeMyImage(event)"><img id = "Slot2" width = 300 height =300 src = "https://lh3.googleusercontent.com/u/0/d/1eaH8AI4CqVxz-nGyUydra5rmarNbj9lS"></div></td>
+                    <td><div class = 'pic' onclick="sortMyImages(event)"><img id = "Slot2" width = 300 height =300 src = "2.png"></div></td>
+                    <td><div class = 'pic' onclick="sortMyImages(event)"><img id = "Slot3" width = 300 height =300 src = "3.png"></div></td>
+                    <td><div class = 'pic' onclick="sortMyImages(event)"><img id = "Slot1" width = 300 height =300 src = "1.png"></div></td>
+                    <td><div class = 'pic' onclick="sortMyImages(event)"><img id = "Slot4" width = 300 height =300 src = "4.png"></div></td>
                 </tr>
             </table>
             <br>
     <h4 id='result'> </h4>
-   
            <img id = "reload" src="https://cdn.pixabay.com/photo/2016/03/31/18/42/icons-1294569__340.png" onclick = "reload()" height = 80>
         </center>
     </body>
